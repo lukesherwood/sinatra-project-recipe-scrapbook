@@ -13,7 +13,10 @@ class RecipesController < ApplicationController
 
   #for new recipes
   post "/recipes" do
-    redirect "/recipes"
+      @recipe = RECIPE.new(params)
+      @recipe.save
+      redirect "/recipes/#{@recipe.id}"
+    
   end
 
   
@@ -33,7 +36,10 @@ class RecipesController < ApplicationController
   end
 
  
-  delete "/recipes/:id/delete" do
+  get "/recipes/:id/delete" do
+    RECIPE.all.find(params[:id]).destroy
     redirect "/recipes"
   end
+
+  
 end

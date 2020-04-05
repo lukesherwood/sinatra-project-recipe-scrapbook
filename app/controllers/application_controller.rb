@@ -13,4 +13,20 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
+  helpers do
+		def logged_in?
+			!!current_user
+		end
+
+		def current_user
+      USER.find(session[:user_id])
+      # or @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    end
+
+    def input_valid?
+      !params[:name].empty? && !params[:ingredients].empty? && !params[:method].empty?
+    end
+    
+	end
+
 end
