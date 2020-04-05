@@ -1,1 +1,22 @@
 <h1>Edit a recipe in the Recipe Scrapbook</h1>
+
+<h3>Edit your recipe:</h3>
+<p>
+<form action="/recipes/<%= @recipe.id %>" method="post">
+<input type="hidden" name="_method" value="PATCH">
+    <label for="name">Recipe Name:</label><br>
+    <br>
+    <input type="text" name="name" id="name" value="<%= @recipe.name %>"><br>
+    <br>
+    <label for="ingredients">Ingredients:</label><br>
+    <br>
+    <textarea rows="10" cols="85" name="ingredients" id="ingredients"> <%= @recipe.ingredients %> </textarea><br>
+    <br>
+    <label for="method">Method:</label><br>
+    <br>
+    <textarea rows="10" cols="85" name="method" id="method"> <%= @recipe.method %> </textarea><br>
+
+    <br><label for="submit">Create Your Recipe:</label>
+    <button type="submit" value="submit" id="submit">Submit</button>
+  </form>
+</p>
