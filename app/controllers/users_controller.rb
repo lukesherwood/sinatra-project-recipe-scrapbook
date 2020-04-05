@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
-  get "/users/signup" do
-    erb :"/users/signup"
+  get "/signup" do
+    if !logged_in?
+      erb :'/users/signup'
+  else 
+      redirect to '/recipes'
+  end
   end
 
   #for user signup
@@ -10,17 +14,31 @@ class UsersController < ApplicationController
     if @user.save && !@user.email.empty? && !@user.username.empty? && !@user.password.empty?
         session[:user_id] = @user.id
         redirect "/recipes"
-        # for when users working correctly redirect "/users/#{@user.id}" 
+        # for when login working correctly redirect "/users/#{@user.id}" 
     else
       redirect "/signup"
     end
   end
 
-  get "/users/login" do
-    erb :'/users/login'
+  get "/login" do
+    if !logged_in?
+      erb :'/users/login'
+  else 
+      redirect to '/recipes'
+  end
   end
 
-  get "/users/logout" do
+  post '/login' do
+    @user = USER.find_by(:username => params[:username]) 
+    if @user && @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        redirect to '/recipes'
+    else
+        erb :'/users/login'
+    end
+end
+
+  get "/logout" do
     redirect "/login"
   end
 
