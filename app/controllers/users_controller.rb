@@ -43,19 +43,11 @@ end
     redirect '/login'
   end
 
+  #shows all users recipes
   get "/users/:id" do
     @user = USER.all.find(params[:id])
+    @recipes = @user.RECIPES
     erb :"/users/homepage"
   end
-
-  #shows all users recipes
-  get "/users/:id/recipes" do
-    @user = USER.all.find(params[:id])
-    @recipes = @user.RECIPES
-    erb :"/users/recipes"
-  end
-
-  
-
 
 end

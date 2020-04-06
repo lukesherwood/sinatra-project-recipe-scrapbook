@@ -1,20 +1,31 @@
-<h1>This is your recipe</h1>
+<div class="topnav">
+  <a href="/">Home</a>
+  <a href="/recipes">Recipes</a>
+  <a href="/recipes/new">Create a Recipe</a>
+  <a href="/users/<%= current_user.id %>">My Homepage</a>
+</div> 
 
 <h2><%= @recipe.name.titleize %> </h2>
-
 <h3> By: <%= @recipe.USER.username %></h3>
-<p></p>
-<h3> Ingredients:  </h3>
-<p><%= @recipe.ingredients %> </p>
-<h3> Method:  </h3>
-<p><%= @recipe.method %> </p>
 
+
+<h3> Ingredients:  </h3>
+<ul>
+    <% @recipe.ingredients.split("\n").each do |ingredient| %> 
+        <li><%= ingredient %></li>
+    <% end%>
+</p>
+<h3> Method:  </h3>
+<ul>
+    <% @recipe.method.split("\n").each do |step| %> 
+        <li><%= step %></li>
+    <% end%> 
+</ul>
+<br>
 <form action="/recipes/<%= @recipe.id %>/delete">
     <button type="submit">Delete Recipe</button>
 </form>
 <form action="/recipes/<%= @recipe.id %>/edit">
     <button type="submit">Edit Recipe</button>
 </form>
-<form action="/recipes">
-    <button type="submit">Back to all recipes</button>      
-</form>
+    

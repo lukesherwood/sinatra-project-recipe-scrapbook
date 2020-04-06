@@ -1,5 +1,11 @@
-<h1>These are all your recipes on the Recipe Scrapbook</h1>
+<div class="topnav">
+  <a href="/">Home</a>
+  <a href="/recipes">Recipes</a>
+  <a href="/recipes/new">Create a Recipe</a>
+  <a href="/users/<%= current_user.id %>">My Homepage</a>
+</div> 
 <br>
+<h2>These are all your recipes on the Recipe Scrapbook</h2>
 <br>
 <ul>
 <% if !@recipes.empty?%>

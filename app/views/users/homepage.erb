@@ -5,15 +5,16 @@
   <a class="active" href="/users/<%= current_user.id %>">My Homepage</a>
 </div> 
 <br>
-<h2><%= @user.username %>'s Homepage</h2><br>
-<form action="/recipes/new">
-    <button type="submit">New Recipe</button>
-</form>
+<h2>Hello, <%= @user.username %></h2>
+<h3>These are all your recipes on the Recipe Scrapbook</h3>
 <br>
-<form action="/recipes">
-    <button type="submit">Back to all recipes</button>      
-</form>
-<br>
-<form action="/users/<%= @user.id %>/recipes">
-    <button type="submit">See all your recipes</button>      
-</form>
+<ul>
+<% if !@recipes.empty?%>
+<% @recipes.each do |recipe| %>
+<li> <a href="/recipes/<%= recipe.id %>"><%= recipe.name %> </a>
+</li>
+<% end %>
+<% else %>
+You have no recipes
+<% end %>
+</ul>     
