@@ -1,5 +1,11 @@
-<h1><%= @user.username %>'s Homepage</h1><br>
-
+<div class="topnav">
+  <a href="/">Home</a>
+  <a href="/recipes">Recipes</a>
+  <a href="/recipes/new">Create a Recipe</a>
+  <a class="active" href="/users/<%= current_user.id %>">My Homepage</a>
+</div> 
+<br>
+<h2><%= @user.username %>'s Homepage</h2><br>
 <form action="/recipes/new">
     <button type="submit">New Recipe</button>
 </form>

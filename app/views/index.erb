@@ -1,7 +1,12 @@
-<h1>Welcome to the Recipe Scrapbook</h1>
 
-<h4>Keep a online scrapbook of all your family recipes</h4><br>
+<% if logged_in? %>
+<div class="topnav">
+  <a class="active" href="/">Home</a>
+  <a href="/recipes">Recipes</a>
+  <a href="/recipes/new">Create a Recipe</a>
+  <a href="/users/<%= current_user.id %>">My Homepage</a>
+</div> 
+<% end%>
 
-
-<br><p> Please <a href="/users/signup">Sign Up</a> or <a href="/users/login">Log In</a> to continue.
+<br> <% if !logged_in? %><p> Please <a href="/signup">Sign Up</a> or <a href="/login">Log In</a> to continue.</p> <% end%>
 

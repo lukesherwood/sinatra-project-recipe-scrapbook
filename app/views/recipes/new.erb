@@ -1,6 +1,11 @@
-<h1>Create a new recipe to store in the Recipe Scrapbook</h1>
-
-<h3>Create your recipe:</h3>
+<div class="topnav">
+  <a href="/">Home</a>
+  <a href="/recipes">Recipes</a>
+  <a class="active" href="/recipes/new">Create a Recipe</a>
+  <a href="/users/<%= current_user.id %>">My Homepage</a>
+</div> 
+<br>
+<h2>Create your recipe</h2>
 <p>
 <form action='/recipes' method="post">
     <label for="name">Recipe Name:</label><br>
@@ -15,7 +20,7 @@
     <br>
     <textarea rows="10" cols="85" name="method" id="method"> </textarea><br>
 
-    <br><label for="submit">Create Your Recipe:</label>
+    <br><label for="submit"></label>
     <button type="submit" value="submit" id="submit">Submit</button>
   </form>
 </p>

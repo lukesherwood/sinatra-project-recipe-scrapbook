@@ -1,5 +1,11 @@
-<h1>Recipes in the Recipe Scrapbook</h1><br>
+<div class="topnav">
+  <a href="/">Home</a>
+  <a class="active" href="/recipes">Recipes</a>
+  <a href="/recipes/new">Create a Recipe</a>
+  <a href="/users/<%= current_user.id %>">My Homepage</a>
+</div> 
 <br>
+<h2>Recipes</h2><br>
 <ul>
 <% @recipes.each do |recipe| %>
 <li> <a href="/recipes/<%= recipe.id %>"><%= recipe.name %> </a><br> <%= recipe.ingredients %>
