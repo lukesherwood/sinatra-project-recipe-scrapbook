@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     if @user.save && !@user.email.empty? && !@user.username.empty? && !@user.password.empty?
         session[:user_id] = @user.id
         redirect "/recipes"
-        # for when login working correctly redirect "/users/#{@user.id}" 
     else
       redirect "/signup"
     end
@@ -26,7 +25,7 @@ class UsersController < ApplicationController
     @user = USER.find_by(:username => params[:username]) 
     if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        redirect to '/recipes'
+        redirect "/users/#{@user.id}"
     else
         erb :'/users/login'
     end

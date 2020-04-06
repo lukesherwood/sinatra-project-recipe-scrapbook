@@ -7,7 +7,6 @@ class RecipesController < ApplicationController
     erb :"/recipes/index"
   end
 
-
   get "/recipes/new" do
     not_logged_in_redirect
     erb :"/recipes/new"
@@ -33,21 +32,24 @@ class RecipesController < ApplicationController
   get "/recipes/:id/edit" do
     not_logged_in_redirect
     @recipe = RECIPE.find(params[:id])
+    authorized_to_change?(@recipe)
     erb :"/recipes/edit"
   end
 
   #edit
-  post "/recipes/:id" do\
+  post "/recipes/:id" do
     @recipe = RECIPE.find(params[:id])
-    @recipe.update(name: params[:name], ingredients: params[:ingredients], name: params[:method],)
-      @recipe.save
+    @recipe.update(ingredients: params[:ingredients], name: params[:name], method: params[:method], public: params[:public])
+    @recipe.save
     redirect "/recipes/#{@recipe.id}"
   end
 
  
   get "/recipes/:id/delete" do
     not_logged_in_redirect
-    RECIPE.all.find(params[:id]).destroy
+    @recipe = RECIPE.all.find(params[:id])
+    authorized_to_change?(@recipe)
+    @recipe.destroy
     redirect "/recipes"
   end
 

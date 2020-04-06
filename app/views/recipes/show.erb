@@ -5,7 +5,7 @@
   <a href="/users/<%= current_user.id %>">My Homepage</a>
 </div> 
 
-<h2><%= @recipe.name.titleize %> </h2>
+<h2><%= @recipe.name %> </h2>
 <h3> By: <%= @recipe.USER.username %></h3>
 
 
@@ -22,10 +22,12 @@
     <% end%> 
 </ul>
 <br>
-<form action="/recipes/<%= @recipe.id %>/delete">
-    <button type="submit">Delete Recipe</button>
-</form>
-<form action="/recipes/<%= @recipe.id %>/edit">
-    <button type="submit">Edit Recipe</button>
-</form>
+<% if @recipe.USER_id == current_user.id %>
+    <form action="/recipes/<%= @recipe.id %>/delete">
+        <button type="submit">Delete Recipe</button>
+    </form>
+    <form action="/recipes/<%= @recipe.id %>/edit">
+        <button type="submit">Edit Recipe</button>
+    </form>
+<% end%>
     

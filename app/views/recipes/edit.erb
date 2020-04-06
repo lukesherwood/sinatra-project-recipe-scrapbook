@@ -20,7 +20,11 @@
     <label for="method">Method:</label><br>
     <br>
     <textarea rows="10" cols="85" name="method" id="method"> <%= @recipe.method %> </textarea><br>
-
+    <p> Would you like your recipe to be public or private?</p>
+        <input type="radio" id="private" name="public" value="false">
+        <label for="public">Private</label><br>
+        <input type="radio" id="public" name="public" value="true" checked="checked">
+        <label for="public">Public</label><br>
     <br>
     <button type="submit" value="submit" id="submit">Submit</button>
   </form>

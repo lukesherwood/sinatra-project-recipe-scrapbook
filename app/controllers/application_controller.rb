@@ -41,5 +41,12 @@ class ApplicationController < Sinatra::Base
       end
     end
 
+    def authorized_to_change?(recipe)
+      if recipe.USER_id == current_user.id
+      else
+        redirect '/recipes'
+      end
+    end
+
 	end
 end

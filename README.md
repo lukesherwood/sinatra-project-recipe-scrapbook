@@ -1,9 +1,7 @@
+add login or signup links on both pages
 
+logout button on all pages
 
-create a boolean column on recipe for public/private
-
-create checks for valid input? method in helpers
+add failure error messages while redirecting to new pages
 
 Insert all seed data from recipe book
-
-
