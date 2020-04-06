@@ -14,6 +14,14 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
+    
+    def logged_in_or_redirect
+      if logged_in?
+      else
+        redirect '/'
+      end
+    end
+
 		def logged_in?
 			!!current_user
 		end

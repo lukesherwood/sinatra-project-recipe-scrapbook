@@ -1,17 +1,14 @@
 <div class="topnav">
   <a href="/">Home</a>
-  <a class="active" href="/recipes">Recipes</a>
+  <a class="active" href="/recipes">Public Recipes</a>
   <a href="/recipes/new">Create a Recipe</a>
   <a href="/users/<%= current_user.id %>">My Homepage</a>
 </div> 
 <br>
-<h2>Recipes</h2><br>
+<h2>Recipes</h2>
 <ul>
-<% @recipes.each do |recipe| %>
-<li> <a href="/recipes/<%= recipe.id %>"><%= recipe.name %> </a><br> <%= recipe.ingredients %>
-<br> <%= recipe.method %>
-</li>
-
-<% end %>
+    <% @recipes.each do |recipe| %>
+        li> <a href="/recipes/<%= recipe.id %>"><%= recipe.name %> </a></li>
+    <% end %>
 </ul>
  

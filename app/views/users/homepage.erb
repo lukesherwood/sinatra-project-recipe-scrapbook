@@ -1,12 +1,12 @@
 <div class="topnav">
   <a href="/">Home</a>
-  <a href="/recipes">Recipes</a>
+  <a href="/recipes">Public Recipes</a>
   <a href="/recipes/new">Create a Recipe</a>
   <a class="active" href="/users/<%= current_user.id %>">My Homepage</a>
 </div> 
 <br>
 <h2>Hello, <%= @user.username %></h2>
-<h3>These are all your recipes on the Recipe Scrapbook</h3>
+<h3>Your Recipes:</h3>
 <br>
 <ul>
 <% if !@recipes.empty?%>

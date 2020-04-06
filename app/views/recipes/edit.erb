@@ -1,5 +1,10 @@
-<h1>Edit a recipe in the Recipe Scrapbook</h1>
-
+<div class="topnav">
+  <a href="/">Home</a>
+  <a class="active" href="/recipes">Public Recipes</a>
+  <a href="/recipes/new">Create a Recipe</a>
+  <a href="/users/<%= current_user.id %>">My Homepage</a>
+</div> 
+<br>
 <h3>Edit your recipe:</h3>
 <p>
 <form action="/recipes/<%= @recipe.id %>" method="post">
@@ -16,7 +21,7 @@
     <br>
     <textarea rows="10" cols="85" name="method" id="method"> <%= @recipe.method %> </textarea><br>
 
-    <br><label for="submit">Create Your Recipe:</label>
+    <br>
     <button type="submit" value="submit" id="submit">Submit</button>
   </form>
 </p>
