@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200405203843) do
+ActiveRecord::Schema.define(version: 20200406223411) do
 
   create_table "recipes", force: :cascade do |t|
     t.string  "name"
     t.string  "method"
     t.string  "ingredients"
     t.integer "USER_id"
+    t.boolean "public",      default: true
   end
 
   create_table "users", force: :cascade do |t|
