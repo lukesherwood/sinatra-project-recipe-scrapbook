@@ -1,0 +1,13 @@
+<h1><%= @user.username %>'s Homepage</h1><br>
+
+<form action="/recipes/new">
+    <button type="submit">New Recipe</button>
+</form>
+<br>
+<form action="/recipes">
+    <button type="submit">Back to all recipes</button>      
+</form>
+<br>
+<form action="/users/<%= @user.id %>/recipes">
+    <button type="submit">See all your recipes</button>      
+</form>

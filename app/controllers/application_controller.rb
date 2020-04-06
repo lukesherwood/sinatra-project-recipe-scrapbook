@@ -19,8 +19,7 @@ class ApplicationController < Sinatra::Base
 		end
 
 		def current_user
-      USER.find(session[:user_id])
-      # or @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+      @current_user ||= USER.find_by(id: session[:user_id]) if session[:user_id]
     end
 
     def input_valid?

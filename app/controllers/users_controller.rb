@@ -23,9 +23,9 @@ class UsersController < ApplicationController
   get "/login" do
     if !logged_in?
       erb :'/users/login'
-  else 
-      redirect to '/recipes'
-  end
+    else
+      redirect "/recipes"
+    end
   end
 
   post '/login' do
@@ -39,15 +39,23 @@ class UsersController < ApplicationController
 end
 
   get "/logout" do
-    redirect "/login"
+    session.clear if logged_in? 
+    redirect '/login'
+  end
+
+  get "/users/:id" do
+    @user = USER.all.find(params[:id])
+    erb :"/users/homepage"
   end
 
   #shows all users recipes
-  get "/users/:id" do
+  get "/users/:id/recipes" do
     @user = USER.all.find(params[:id])
-    @recipes = RECIPE.all.collect{|recipe| recipe.USER_id == "#{@user.id}"}
-    erb :"/users/index"
+    @recipes = @user.RECIPES
+    erb :"/users/recipes"
   end
+
+  
 
 
 end

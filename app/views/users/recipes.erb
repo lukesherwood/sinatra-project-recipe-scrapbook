@@ -1,11 +1,14 @@
 <h1>These are all your recipes on the Recipe Scrapbook</h1>
-
+<br>
 <br>
 <ul>
+<% if !@recipes.empty?%>
 <% @recipes.each do |recipe| %>
 <li> <a href="/recipes/<%= recipe.id %>"><%= recipe.name %> </a><br> <%= recipe.ingredients %>
 <br> <%= recipe.method %>
 </li>
-
+<% end %>
+<% else %>
+You have no recipes
 <% end %>
 </ul>
