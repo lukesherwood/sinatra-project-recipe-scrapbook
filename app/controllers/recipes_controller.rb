@@ -14,6 +14,7 @@ class RecipesController < ApplicationController
   #for new recipes
   post "/recipes" do
       @recipe = RECIPE.new(params)
+      @recipe.USER = current_user
       @recipe.save
       redirect "/recipes/#{@recipe.id}"
     

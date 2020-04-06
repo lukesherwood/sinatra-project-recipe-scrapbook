@@ -2,7 +2,7 @@
 
 <h2><%= @recipe.name.titleize %> </h2>
 
-<h3> By:  </h3>
+<h3> By: <%= @recipe.USER.username %></h3>
 <p></p>
 <h3> Ingredients:  </h3>
 <p><%= @recipe.ingredients %> </p>
