@@ -1,4 +1,4 @@
-add logged_in checks
+
 
 create a boolean column on recipe for public/private
 

@@ -1,11 +1,8 @@
 class UsersController < ApplicationController
 
   get "/signup" do
-    if !logged_in?
-      erb :'/users/signup'
-  else 
-      redirect to '/recipes'
-  end
+    already_logged_in_redirect
+    erb :'/users/signup'
   end
 
   #for user signup
@@ -21,11 +18,8 @@ class UsersController < ApplicationController
   end
 
   get "/login" do
-    if !logged_in?
-      erb :'/users/login'
-    else
-      redirect "/recipes"
-    end
+    already_logged_in_redirect
+    erb :'/users/login'
   end
 
   post '/login' do
@@ -45,6 +39,7 @@ end
 
   #shows all users recipes
   get "/users/:id" do
+    not_logged_in_redirect
     @user = USER.all.find(params[:id])
     @recipes = @user.RECIPES
     erb :"/users/homepage"

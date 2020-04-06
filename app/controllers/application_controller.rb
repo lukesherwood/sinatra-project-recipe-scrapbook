@@ -15,7 +15,7 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     
-    def logged_in_or_redirect
+    def not_logged_in_redirect
       if logged_in?
       else
         redirect '/'
@@ -34,6 +34,12 @@ class ApplicationController < Sinatra::Base
       !params[:name].empty? && !params[:ingredients].empty? && !params[:method].empty?
     end
     
-	end
+    def already_logged_in_redirect
+      if !logged_in?
+      else
+        redirect '/recipes'
+      end
+    end
 
+	end
 end
