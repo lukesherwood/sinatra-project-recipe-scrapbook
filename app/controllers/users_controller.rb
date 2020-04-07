@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   #for user signup
   post "/users" do
     @user = USER.new(params)
-    if @user.save && !@user.email.empty? && !@user.username.empty? && !@user.password.empty?
+    if @user.save
         session[:user_id] = @user.id
         redirect "/recipes"
     else
@@ -33,7 +33,7 @@ end
 
   get "/logout" do
     session.clear if logged_in? 
-    redirect '/login'
+    redirect '/'
   end
 
   #shows all users recipes
@@ -41,7 +41,7 @@ end
     not_logged_in_redirect
     @user = USER.all.find(params[:id])
     @recipes = @user.RECIPES
-    erb :"/users/homepage"
+    erb :"/users/index"
   end
 
 end

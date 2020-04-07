@@ -17,10 +17,14 @@
     
     <div class="wrapper">
       <h1>Recipe Scrapbook</h1>
-      <h4>Keep a online scrapbook of all your family recipes</h4><br>
+      <h4>Keep an online scrapbook of all your family recipes</h4><br>
         <%= yield %>
 
       <footer class="branding">
+        <% if logged_in?%>
+          <a href="/logout">Logout</a><br>
+          <br>
+        <% end%>
         <small>&copy; 2020 <strong>RecipeProject</strong></small>
       </footer>
     </div>
