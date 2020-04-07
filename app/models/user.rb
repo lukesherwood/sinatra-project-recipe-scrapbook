@@ -1,6 +1,5 @@
-class USER < ActiveRecord::Base
-    has_many :RECIPES
-
+class User < ActiveRecord::Base
+    has_many :recipes
     has_secure_password
 
     validates :username, :presence => true, 

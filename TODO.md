@@ -1,8 +1,13 @@
 TODO:
+separate class for ingredients? :amount, :measurement, :name. Recipes have many ingredients, ingredients belongs_to recipe
+
+add more than one recipe at a time?
+
+blog post
 
 refactor code
 
-readme contains instructions
+walk-thru video
 
 extra for experts
 

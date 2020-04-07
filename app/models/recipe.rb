@@ -1,4 +1,5 @@
-class RECIPE < ActiveRecord::Base
-    belongs_to :USER
-    validates :name, :ingredients, :method, presence: true
+class Recipe < ActiveRecord::Base
+    belongs_to :user
+    has_many :ingredients
+    validates :name, :method, presence: true #ingredients_id?
 end
