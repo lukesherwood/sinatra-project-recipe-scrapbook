@@ -1,5 +1,10 @@
 
 <h3>Log In</h3>
+
+<% if @errors %>
+  <p style="color: red;"><%= @errors %></p>
+<% end %>
+
 <form method='post' action='/login'>
     <input type="text" name="username" id="username" placeholder="Username:"><br>
 	<input type="password" name="password" id="password" placeholder="Password:"><br>

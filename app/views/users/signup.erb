@@ -1,4 +1,11 @@
 <h3>Sign Up</h3>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p style="color: red;"><%= error %></p>
+  <% end %>
+<% end %>
+
 <form action="/users" method="POST">
 	<input type="text" name="username" id="username" placeholder="Username:"><br>
     <input type="text" name="email" id="email" placeholder="Email:"><br>

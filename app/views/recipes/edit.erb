@@ -6,7 +6,13 @@
 </div> 
 <br>
 <h3>Edit your recipe:</h3>
-<p>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p style="color: red;"><%= error %></p>
+  <% end %>
+<% end %>
+
 <form action="/recipes/<%= @recipe.id %>" method="post">
 <input type="hidden" name="_method" value="PATCH">
     <label for="name">Recipe Name:</label><br>
@@ -21,11 +27,10 @@
     <br>
     <textarea rows="10" cols="85" name="method" id="method"> <%= @recipe.method %> </textarea><br>
     <p> Would you like your recipe to be public or private?</p>
-        <input type="radio" id="private" name="public" value="false">
+        <input type="radio" id="private" name="public" value="false" <%= checked="checked" if !@recipe.public %>>
         <label for="public">Private</label><br>
-        <input type="radio" id="public" name="public" value="true" checked="checked">
+        <input type="radio" id="public" name="public" value="true" <%= checked="checked" if @recipe.public %>>
         <label for="public">Public</label><br>
     <br>
     <button type="submit" value="submit" id="submit">Submit</button>
   </form>
-</p>

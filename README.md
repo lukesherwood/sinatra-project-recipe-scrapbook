@@ -1,11 +1,12 @@
+TODO:
+
 add failure error messages while redirecting to new pages
 
-change my homepage to my recipes
+refactor code
 
+unique username/email etc
 
-
-
-
+readme contains instructions
 
 extra for experts
 

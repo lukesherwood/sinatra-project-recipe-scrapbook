@@ -12,7 +12,8 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect "/recipes"
     else
-      redirect "/signup"
+      @errors = @user.errors.full_messages
+      erb :'/users/signup'
     end
   end
 
@@ -21,12 +22,14 @@ class UsersController < ApplicationController
     erb :'/users/login'
   end
 
+  #for user login
   post '/login' do
     @user = USER.find_by(:username => params[:username]) 
     if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
         redirect "/users/#{@user.id}"
     else
+      @errors = "Invalid username or password."
         erb :'/users/login'
     end
 end
@@ -36,7 +39,7 @@ end
     redirect '/'
   end
 
-  #shows all users recipes
+  #user homepage/index
   get "/users/:id" do
     not_logged_in_redirect
     @user = USER.all.find(params[:id])

@@ -6,7 +6,12 @@
 </div> 
 <br>
 <h2>Create your recipe</h2>
-<p>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p style="color: red;"><%= error %></p>
+  <% end %>
+<% end %>
 <form action='/recipes' method="post">
     <label for="name">Recipe Name:</label><br>
         <input type="text" name="name" id="name"><br>
@@ -25,4 +30,3 @@
     <br><label for="submit"></label>
     <button type="submit" value="submit" id="submit">Submit</button>
   </form>
-</p>
