@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
 
   get "/recipes/new" do
     not_logged_in_redirect
+    @measurements = ["cup", "teaspoon", "tablespoon", "each", "grams", "ounces", "lbs"]
     erb :"/recipes/new"
   end
 

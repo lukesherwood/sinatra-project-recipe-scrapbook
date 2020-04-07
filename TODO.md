@@ -1,7 +1,9 @@
 TODO:
-fix views with updates to migration tables adn ingredient class
+fix new page for ingredients class
 
 add more than one recipe at a time?
+
+combine home page and public recipes?
 
 blog post
 

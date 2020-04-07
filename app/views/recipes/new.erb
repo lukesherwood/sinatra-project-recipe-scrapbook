@@ -14,11 +14,25 @@
 <% end %>
 <form action='/recipes' method="post">
     <label for="name">Recipe Name:</label><br>
-        <input type="text" name="name" id="name"><br>
-        <br>
-    <label for="ingredients">Ingredients:</label><br>
-        <textarea rows="10" cols="85" name="ingredients" id="ingredients"> </textarea><br>
-        <br>
+      <input type="text" name="name" id="name"><br>
+      <br>
+
+    
+    <label>Select Ingredients</label>
+    <br>
+    <% 15.times do%>
+    <label for="amount"></label>
+      <input type="text" name="amount" id="amount" placeholder="amount">
+        <select id="ingredients" name="ingredients">
+          <% @measurements.each do |measurement|%>
+          <option value = "<%= measurement %>"><%= measurement %></option>
+          <% end %>
+        </select>
+    <label for="name"></label>
+      <input type="text" name="name" id="name" placeholder="name of ingredient"><br>
+    <% end%>
+    <br>
+    <br>
     <label for="method">Method:</label><br>
         <textarea rows="10" cols="85" name="method" id="method"> </textarea><br>
         <br>
@@ -29,4 +43,8 @@
         <label for="public">Public</label><br>
     <br><label for="submit"></label>
     <button type="submit" value="submit" id="submit">Submit</button>
-  </form>
+</form>
+
+<form action='/recipes' method="post">
+  
+</form>
