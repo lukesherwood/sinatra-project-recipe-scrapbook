@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
 		end
 
 		def current_user
-      @current_user ||= USER.find_by(id: session[:user_id]) if session[:user_id]
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
 
     def input_valid?
@@ -42,7 +42,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def authorized_to_change?(recipe)
-      if recipe.USER_id == current_user.id
+      if recipe.user_id == current_user.id
       else
         redirect '/recipes'
       end

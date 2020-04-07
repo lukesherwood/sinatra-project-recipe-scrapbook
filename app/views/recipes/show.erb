@@ -1,18 +1,18 @@
 <div class="topnav">
   <a href="/">Home</a>
-  <a href="/recipes">Recipes</a>
+  <a href="/recipes">Public Recipes</a>
   <a href="/recipes/new">Create a Recipe</a>
   <a href="/users/<%= current_user.id %>">My Recipes</a>
 </div> 
 
 <h2><%= @recipe.name %> </h2>
-<h3> By: <%= @recipe.USER.username %></h3>
+<h3> By: <%= @recipe.user.username %></h3>
 
 
 <h3> Ingredients:  </h3>
 <ul>
-    <% @recipe.ingredients.split("\n").each do |ingredient| %> 
-        <li><%= ingredient %></li>
+    <% @recipe.ingredients.each do |ingredient| %> 
+        <li><%= "#{ingredient.amount} - #{ingredient.measurement unless ingredient.measurement == "each"} #{ingredient.name} "%></li>
     <% end%>
 </p>
 <h3> Method:  </h3>
@@ -22,7 +22,7 @@
     <% end%> 
 </ul>
 <br>
-<% if @recipe.USER_id == current_user.id %>
+<% if @recipe.user_id == current_user.id %>
     <form action="/recipes/<%= @recipe.id %>/delete">
         <button type="submit">Delete Recipe</button>
     </form>

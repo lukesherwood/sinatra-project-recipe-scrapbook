@@ -1,5 +1,5 @@
 TODO:
-separate class for ingredients? :amount, :measurement, :name. Recipes have many ingredients, ingredients belongs_to recipe
+fix views with updates to migration tables adn ingredient class
 
 add more than one recipe at a time?
 

@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   #index shows all public recipes
   get "/recipes" do
     not_logged_in_redirect
-    @recipes = RECIPE.all
+    @recipes = Recipe.all
     erb :"/recipes/index"
   end
 
@@ -14,8 +14,8 @@ class RecipesController < ApplicationController
 
   #for new recipes
   post "/recipes" do
-      @recipe = RECIPE.new(params)
-      @recipe.USER = current_user
+      @recipe = Recipe.new(params)
+      @recipe.user = current_user
       if @recipe.save
         redirect "/recipes/#{@recipe.id}"
       else
@@ -27,21 +27,21 @@ class RecipesController < ApplicationController
   
   get "/recipes/:id" do
     not_logged_in_redirect
-    @recipe = RECIPE.all.find(params[:id])
+    @recipe = Recipe.all.find(params[:id])
     erb :"/recipes/show"
   end
 
   
   get "/recipes/:id/edit" do
     not_logged_in_redirect
-    @recipe = RECIPE.find(params[:id])
+    @recipe = Recipe.find(params[:id])
     authorized_to_change?(@recipe)
     erb :"/recipes/edit"
   end
 
   #for editing recipes
   post "/recipes/:id" do
-    @recipe = RECIPE.find(params[:id])
+    @recipe = Recipe.find(params[:id])
     @recipe.update(ingredients: params[:ingredients], name: params[:name], method: params[:method], public: params[:public])
     if @recipe.save
       redirect "/recipes/#{@recipe.id}"
@@ -53,7 +53,7 @@ class RecipesController < ApplicationController
  
   get "/recipes/:id/delete" do
     not_logged_in_redirect
-    @recipe = RECIPE.all.find(params[:id])
+    @recipe = Recipe.all.find(params[:id])
     authorized_to_change?(@recipe)
     @recipe.destroy
     redirect "/recipes"

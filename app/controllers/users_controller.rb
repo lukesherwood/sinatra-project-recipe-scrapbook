@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   #for user signup
   post "/users" do
-    @user = USER.new(params)
+    @user = User.new(params)
     if @user.save
         session[:user_id] = @user.id
         redirect "/recipes"
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   #for user login
   post '/login' do
-    @user = USER.find_by(:username => params[:username]) 
+    @user = User.find_by(:username => params[:username]) 
     if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
         redirect "/users/#{@user.id}"
@@ -42,8 +42,8 @@ end
   #user homepage/index
   get "/users/:id" do
     not_logged_in_redirect
-    @user = USER.all.find(params[:id])
-    @recipes = @user.RECIPES
+    @user = User.all.find(params[:id])
+    @recipes = @user.recipes
     erb :"/users/index"
   end
 
