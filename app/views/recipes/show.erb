@@ -12,7 +12,7 @@
 <h3> Ingredients:  </h3>
 <ul>
     <% @recipe.ingredients.each do |ingredient| %> 
-        <li><%= "#{ingredient.amount} - #{ingredient.measurement unless ingredient.measurement == "each"} #{ingredient.name} "%></li>
+        <li><%= "#{ingredient.amount} #{ingredient.measurement unless ingredient.measurement == "each"} #{ingredient.name} "%></li>
     <% end%>
 </p>
 <h3> Method:  </h3>

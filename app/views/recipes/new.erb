@@ -20,6 +20,7 @@
 
     <label>Select Ingredients</label>
     <br>
+    <% 10.times do %>
     <label for="amount"></label>
       <input type="text" name="ingredient[][amount]" id="amount" placeholder="amount">
         <select id="measurement" name="ingredient[][measurement]">
@@ -29,6 +30,7 @@
         </select>
     <label for="ingredient_name"></label>
       <input type="text" name="ingredient[][name]" id="ingredient[name]" placeholder="name of ingredient"><br>
+      <% end%>
     <br>
     <br>
     <label for="method">Method:</label><br>

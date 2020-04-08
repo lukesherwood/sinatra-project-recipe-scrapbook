@@ -41,6 +41,7 @@ class RecipesController < ApplicationController
   
   get "/recipes/:id/edit" do
     not_logged_in_redirect
+    @measurements = ["cup", "teaspoon", "tablespoon", "each", "grams", "ounces", "lbs"]
     @recipe = Recipe.find(params[:id])
     authorized_to_change?(@recipe)
     erb :"/recipes/edit"
@@ -50,12 +51,19 @@ class RecipesController < ApplicationController
   post "/recipes/:id" do
     @recipe = Recipe.find(params[:id])
     @recipe.update(name: params[:name], method: params[:method], public: params[:public])
-    if @recipe.save
-      redirect "/recipes/#{@recipe.id}"
-    else
+    if !@recipe.save
       @errors = @recipe.errors.full_messages
       erb :"/recipes/edit"
     end
+    params[:ingredient].each_with_index do |ingredient_hash, index|
+      @ingredient = @recipe.ingredients[index]
+      @ingredient.update(name: ingredient_hash[:name], amount: ingredient_hash[:amount], measurement: ingredient_hash[:measurement])
+      if !@ingredient.save
+        @errors = @ingredient.errors.full_messages
+        erb :"/recipes/new"
+      end
+  end
+  redirect "/recipes/#{@recipe.id}"
   end
  
   get "/recipes/:id/delete" do

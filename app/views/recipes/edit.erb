@@ -19,9 +19,21 @@
     <br>
     <input type="text" name="name" id="name" value="<%= @recipe.name %>"><br>
     <br>
-    <label for="ingredients">Ingredients:</label><br>
+    <label>Select Ingredients</label>
     <br>
-    <textarea rows="10" cols="85" name="ingredients" id="ingredients"> <%= @recipe.ingredients %> </textarea><br>
+    <%#need to implement a while loop here%>
+    <% @recipe.ingredients.each do |ingredient| %>
+    <label for="amount"></label>
+      <input type="text" name="ingredient[][amount]" id="amount" value="<%= ingredient.amount %>">
+        <select id="measurement" name="ingredient[][measurement]">
+          <% @measurements.each do |measurement|%>
+          <option <%= selected="selected" if ingredient.measurement == measurement %> value ="<%= measurement %>"><%= measurement %></option>
+          <% end %>
+        </select>
+    <label for="ingredient_name"></label>
+      <input type="text" name="ingredient[][name]" id="ingredient[name]" value="<%= ingredient.name %>"><br>
+      <% end%>
+    <br>
     <br>
     <label for="method">Method:</label><br>
     <br>
