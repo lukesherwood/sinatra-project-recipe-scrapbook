@@ -45,7 +45,7 @@ class RecipesController < ApplicationController
   
   get "/recipes/:id/edit" do
     not_logged_in_redirect
-    @measurements = ["cup", "teaspoon", "tablespoon", "each", "grams", "ounces", "lbs"]
+    @measurements = ["cup(s)", "teaspoon(s)", "tablespoon(s)", "each", "grams", "ounces", "lbs", "millilitres"]
     @recipe = Recipe.find(params[:id])
     authorized_to_change?(@recipe)
     erb :"/recipes/edit"
