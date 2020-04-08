@@ -1,6 +1,5 @@
 <div class="topnav">
   <a href="/">Home</a>
-  <a class="active" href="/recipes">Public Recipes</a>
   <a href="/recipes/new">Create a Recipe</a>
   <a href="/users/<%= current_user.id %>">My Recipes</a>
 </div> 
@@ -47,7 +46,7 @@
     <% end%>
     <br>
     <br>
-    
+
     <label for="method">Method:</label><br>
     <br>
     <textarea rows="10" cols="85" name="method" id="method"> <%= @recipe.method %> </textarea><br>

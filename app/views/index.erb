@@ -1,15 +1,21 @@
-
-<% if logged_in? %>
 <div class="topnav">
   <a class="active" href="/">Home</a>
-  <a href="/recipes">Public Recipes</a>
-  <a href="/recipes/new">Create a Recipe</a>
-  <a href="/users/<%= current_user.id %>">My Recipes</a>
+  <% if logged_in? %>
+    <a href="/recipes/new">Create a Recipe</a>
+    <a href="/users/<%=current_user.id %>">My Recipes</a>
+  <% end%>
 </div> 
-<% end%>
 <br>
 <p>
 Welcome to the Recipe Scrapbook 
 
 <br> <% if !logged_in? %><p> Please <a href="/signup">Sign Up</a> or <a href="/login">Log In</a> to continue.</p> <% end%>
 
+<h2>Recipes</h2>
+<ul>
+    <% @recipes.each do |recipe| 
+        if recipe.public == true %>
+        <li> <a href="/recipes/<%= recipe.id %>"><%= recipe.name %> </a></li>
+        <% end %>
+    <% end %>
+</ul>
