@@ -15,16 +15,22 @@ class RecipesController < ApplicationController
 
   #for new recipes
   post "/recipes" do
-      @recipe = Recipe.new(params)
-      @recipe.user = current_user
-      if @recipe.save
-        redirect "/recipes/#{@recipe.id}"
-      else
-        @errors = @recipe.errors.full_messages
-        erb :"/recipes/new"
-      end
+    @recipe = Recipe.new(name: params[:name], method: params[:method], public: params[:public])
+    @recipe.user = current_user
+    if !@recipe.save
+      @errors = @recipe.errors.full_messages
+      erb :"/recipes/new"
+    end
+    params[:ingredient].each do |ingredient_hash|
+        @ingredient = Ingredient.new(ingredient_hash)
+        @ingredient.recipe_id = @recipe.id
+        if !@ingredient.save
+          @errors = @ingredient.errors.full_messages
+          erb :"/recipes/new"
+        end
+    end
+    redirect "/recipes/#{@recipe.id}"
   end
-
   
   get "/recipes/:id" do
     not_logged_in_redirect
@@ -43,7 +49,7 @@ class RecipesController < ApplicationController
   #for editing recipes
   post "/recipes/:id" do
     @recipe = Recipe.find(params[:id])
-    @recipe.update(ingredients: params[:ingredients], name: params[:name], method: params[:method], public: params[:public])
+    @recipe.update(name: params[:name], method: params[:method], public: params[:public])
     if @recipe.save
       redirect "/recipes/#{@recipe.id}"
     else

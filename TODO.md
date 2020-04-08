@@ -1,5 +1,5 @@
 TODO:
-fix new page for ingredients class
+how to add more line if ingredients list full?
 
 add more than one recipe at a time?
 

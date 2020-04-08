@@ -29,10 +29,6 @@ class ApplicationController < Sinatra::Base
 		def current_user
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
-
-    def input_valid?
-      !params[:name].empty? && !params[:ingredients].empty? && !params[:method].empty?
-    end
     
     def already_logged_in_redirect
       if !logged_in?
