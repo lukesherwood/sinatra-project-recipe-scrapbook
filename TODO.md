@@ -1,4 +1,5 @@
 TODO:
+delete or edit buttons on homepage
 
 combine home page and public recipes? if logged in display recipes else display login.signup?
 

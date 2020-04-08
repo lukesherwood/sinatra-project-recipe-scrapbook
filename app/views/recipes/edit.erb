@@ -19,9 +19,9 @@
     <br>
     <input type="text" name="name" id="name" value="<%= @recipe.name %>"><br>
     <br>
+
     <label>Select Ingredients</label>
     <br>
-    <%#need to implement a while loop here%>
     <% @recipe.ingredients.each do |ingredient| %>
     <label for="amount"></label>
       <input type="text" name="ingredient[][amount]" id="amount" value="<%= ingredient.amount %>">
@@ -33,8 +33,21 @@
     <label for="ingredient_name"></label>
       <input type="text" name="ingredient[][name]" id="ingredient[name]" value="<%= ingredient.name %>"><br>
       <% end%>
+
+    <% 5.times do %>
+    <label for="amount"></label>
+      <input type="text" name="ingredient[][amount]" id="amount" placeholder="amount">
+        <select id="measurement" name="ingredient[][measurement]">
+          <% @measurements.each do |measurement|%>
+          <option value = "<%= measurement %>"><%= measurement %></option>
+          <% end %>
+        </select>
+    <label for="ingredient_name"></label>
+      <input type="text" name="ingredient[][name]" id="ingredient[name]" placeholder="name of ingredient"><br>
+    <% end%>
     <br>
     <br>
+    
     <label for="method">Method:</label><br>
     <br>
     <textarea rows="10" cols="85" name="method" id="method"> <%= @recipe.method %> </textarea><br>
