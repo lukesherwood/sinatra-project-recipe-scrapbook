@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
     def not_logged_in_redirect
       if logged_in?
       else
-        redirect '/'
+        redirect '/?error=You have to be logged in to do that'
       end
     end
 
@@ -44,6 +44,8 @@ class ApplicationController < Sinatra::Base
         redirect '/recipes'
       end
     end
+
+    @@measurements = ["cup", "teaspoon", "tablespoon", "each", "grams", "ounces", "lbs", "millilitres"]
 
 	end
 end

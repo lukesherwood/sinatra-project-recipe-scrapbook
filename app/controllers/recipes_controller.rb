@@ -1,15 +1,7 @@
 class RecipesController < ApplicationController
 
-  #index shows all public recipes
-  get "/recipes" do
-    not_logged_in_redirect
-    @recipes = Recipe.all
-    erb :"/recipes/index"
-  end
-
   get "/recipes/new" do
     not_logged_in_redirect
-    @measurements = ["cup", "teaspoon", "tablespoon", "each", "grams", "ounces", "lbs"]
     erb :"/recipes/new"
   end
 
@@ -45,7 +37,6 @@ class RecipesController < ApplicationController
   
   get "/recipes/:id/edit" do
     not_logged_in_redirect
-    @measurements = ["cup(s)", "teaspoon(s)", "tablespoon(s)", "each", "grams", "ounces", "lbs", "millilitres"]
     @recipe = Recipe.find(params[:id])
     authorized_to_change?(@recipe)
     erb :"/recipes/edit"

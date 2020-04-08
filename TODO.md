@@ -1,7 +1,5 @@
 TODO:
-
-blog post
-
+duplicate data for ingredients? too much in the database?
 refactor code
 
 walk-thru video
