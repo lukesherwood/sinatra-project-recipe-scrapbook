@@ -1,9 +1,6 @@
 TODO:
-how to add more line if ingredients list full?
 
-add more than one recipe at a time?
-
-combine home page and public recipes?
+combine home page and public recipes? if logged in display recipes else display login.signup?
 
 blog post
 

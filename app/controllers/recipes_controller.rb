@@ -71,7 +71,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.all.find(params[:id])
     authorized_to_change?(@recipe)
     @recipe.destroy
-    redirect "/recipes"
+    redirect "/users/#{current_user.id}"
   end
 
   
