@@ -17,10 +17,7 @@ class ApplicationController < Sinatra::Base
   helpers do
     
     def not_logged_in_redirect
-      if logged_in?
-      else
-        redirect '/?error=You have to be logged in to do that'
-      end
+      redirect '/?error=You have to be logged in to do that' if !logged_in?
     end
 
 		def logged_in?
@@ -32,17 +29,11 @@ class ApplicationController < Sinatra::Base
     end
     
     def already_logged_in_redirect
-      if !logged_in?
-      else
-        redirect '/recipes'
-      end
+      redirect '/' if logged_in?
     end
 
     def authorized_to_change?(recipe)
-      if recipe.user_id == current_user.id
-      else
-        redirect '/recipes'
-      end
+      redirect '/' unless recipe.user_id == current_user.id
     end
 
     @@measurements = ["cup", "teaspoon", "tablespoon", "each", "grams", "ounces", "lbs", "millilitres"]
