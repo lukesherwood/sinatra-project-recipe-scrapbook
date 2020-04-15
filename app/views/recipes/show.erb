@@ -21,12 +21,13 @@
     <% end%> 
 </ul>
 <br>
-<% if @recipe.user_id == current_user.id %>
-    <form action="/recipes/<%= @recipe.id %>/delete">
-        <button type="submit">Delete Recipe</button>
-    </form>
+<% if @recipe.user_id == current_user.id %> 
     <form action="/recipes/<%= @recipe.id %>/edit">
         <button type="submit">Edit Recipe</button>
     </form>
+    <form action="/recipes/<%= @recipe.id %>/delete">
+        <button type="submit">Delete Recipe</button>
+    </form>
+    
 <% end%>
     

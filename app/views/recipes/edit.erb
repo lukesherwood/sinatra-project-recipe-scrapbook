@@ -14,11 +14,9 @@
 
 <form action="/recipes/<%= @recipe.id %>" method="post">
 <input type="hidden" name="_method" value="PATCH">
-    <label for="name">Recipe Name:</label><br>
-    <br>
-    <input type="text" name="name" id="name" value="<%= @recipe.name %>"><br>
-    <br>
-
+    <div><label for="name">Recipe Name:</label></div>
+    <div><input type="text" name="name" id="name" value="<%= @recipe.name %>"></div>
+   
     <label>Select Ingredients</label>
     <br>
     <% @recipe.ingredients.each do |ingredient| %>
@@ -34,22 +32,22 @@
       <% end%>
 
     <% 5.times do %>
-    <label for="amount"></label>
-      <input type="text" name="ingredient[][amount]" id="amount" placeholder="amount">
-        <select id="measurement" name="ingredient[][measurement]">
-          <% @@measurements.each do |measurement|%>
-          <option value = "<%= measurement %>"><%= measurement %></option>
-          <% end %>
-        </select>
-    <label for="ingredient_name"></label>
-      <input type="text" name="ingredient[][name]" id="ingredient[name]" placeholder="name of ingredient"><br>
+      <label for="amount"></label>
+        <input type="text" name="ingredient[][amount]" id="amount" placeholder="amount">
+          <select id="measurement" name="ingredient[][measurement]">
+            <% @@measurements.each do |measurement|%>
+            <option value = "<%= measurement %>"><%= measurement %></option>
+            <% end %>
+          </select>
+      <label for="ingredient_name"></label>
+        <input type="text" name="ingredient[][name]" id="ingredient[name]" placeholder="name of ingredient"><br>
     <% end%>
     <br>
     <br>
 
     <label for="method">Method:</label><br>
-    <br>
     <textarea rows="10" cols="85" name="method" id="method"> <%= @recipe.method %> </textarea><br>
+    <br>
     <p> Would you like your recipe to be public or private?</p>
         <input type="radio" id="private" name="public" value="false" <%= checked="checked" if !@recipe.public %>>
         <label for="public">Private</label><br>

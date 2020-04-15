@@ -8,16 +8,16 @@
 <h3>Your Recipes:</h3>
 <br>
 <ul>
-<% if !@recipes.empty?%>
-  <% @recipes.each do |recipe| %>
-  <li> <a style="font-size:1.3em;" href="/recipes/<%= recipe.id %>"><%= recipe.name.titleize %> </a> &nbsp &nbsp &nbsp
-  <a style="font-size:0.8em;" href="/recipes/<%= recipe.id %>/edit">edit</a> &nbsp
-  <a style="font-size:0.8em;" href="/recipes/<%= recipe.id %>/delete">delete</a>
-  </li>
+  <% if !@recipes.empty?%>
+    <% @recipes.each do |recipe| %>
+    <li> <a style="font-size:1.3em;" href="/recipes/<%= recipe.id %>"><%= recipe.name.titleize %> </a> &nbsp &nbsp &nbsp
+    <a style="font-size:0.8em;" href="/recipes/<%= recipe.id %>/edit">edit</a> &nbsp
+    <a style="font-size:0.8em;" href="/recipes/<%= recipe.id %>/delete">delete</a>
+    </li>
+    <% end %>
+  <% else %>
+  You have no recipes
   <% end %>
-<% else %>
-You have no recipes
-<% end %>
 </ul>     
 
 
