@@ -10,7 +10,6 @@ class RecipesController < ApplicationController
 
   #for new recipes
   post "/recipes" do
-    #refactor by turning into a method?
     @recipe = Recipe.new(name: params[:name], method: params[:method], public: params[:public])
     @recipe.user = current_user
     if !@recipe.save
@@ -37,8 +36,6 @@ class RecipesController < ApplicationController
 
   #for editing recipes
   post "/recipes/:id" do
-    #updates recipe
-    #refactor by turning into a method?
     @recipe = Recipe.find(params[:id])
     if !@recipe.update(name: params[:name], method: params[:method], public: params[:public])
       @errors = @recipe.errors.full_messages
